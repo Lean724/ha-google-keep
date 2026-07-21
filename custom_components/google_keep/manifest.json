@@ -1,0 +1,13 @@
+{
+  "domain": "google_keep",
+  "name": "Google Keep",
+  "codeowners": ["@Lean724"],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/Lean724/ha-google-keep",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/Lean724/ha-google-keep/issues",
+  "loggers": ["gkeepapi", "custom_components.google_keep"],
+  "requirements": ["gkeepapi==0.15.1"],
+  "version": "0.1.0"
+}

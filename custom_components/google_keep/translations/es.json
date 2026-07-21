@@ -1,0 +1,167 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Conectar con Google Keep",
+        "description": "Ingresá tu email de Google y tu contraseña, o un master token obtenido previamente.",
+        "data": {
+          "email": "Email de Google",
+          "password": "Contraseña",
+          "master_token": "Master token (opcional)",
+          "device_id": "ID de dispositivo (opcional)"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Reautenticar Google Keep",
+        "description": "La sesión de Google Keep para {email} expiró. Por favor, ingresá tu contraseña nuevamente.",
+        "data": {
+          "password": "Contraseña"
+        }
+      },
+      "reconfigure": {
+        "title": "Reconfigurar Google Keep",
+        "data": {
+          "email": "Email de Google",
+          "password": "Contraseña",
+          "master_token": "Master token (opcional)",
+          "device_id": "ID de dispositivo (opcional)"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Email, contraseña o master token inválidos.",
+      "cannot_connect": "No se pudo conectar con Google. Verificá tu conexión a internet e intentá nuevamente.",
+      "missing_credentials": "Debés proporcionar una contraseña o un master token.",
+      "unknown": "Error inesperado, revisá los logs para más detalles."
+    },
+    "abort": {
+      "already_configured": "Esta cuenta de Google ya está configurada.",
+      "reauth_successful": "La reautenticación fue exitosa.",
+      "reconfigure_successful": "La reconfiguración fue exitosa."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opciones de Google Keep",
+        "data": {
+          "update_interval": "Intervalo de actualización",
+          "auto_sync": "Sincronización automática",
+          "default_list": "Lista por defecto para automatizaciones",
+          "show_archived": "Mostrar notas/listas archivadas",
+          "show_trashed": "Mostrar notas/listas eliminadas",
+          "label_filter": "Sincronizar solo notas/listas con estas etiquetas",
+          "color_filter": "Sincronizar solo notas/listas con estos colores"
+        }
+      }
+    }
+  },
+  "selector": {
+    "update_interval": {
+      "options": {
+        "0": "Manual",
+        "1": "1 minuto",
+        "5": "5 minutos",
+        "10": "10 minutos",
+        "30": "30 minutos"
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "has_pending_items": {
+        "name": "Tiene elementos pendientes"
+      }
+    }
+  },
+  "services": {
+    "sync": {
+      "name": "Sincronizar",
+      "description": "Fuerza una sincronización inmediata con Google Keep.",
+      "fields": {
+        "config_entry_id": {
+          "name": "Cuenta",
+          "description": "Opcional - limitar la sincronización a una sola cuenta de Google Keep."
+        }
+      }
+    },
+    "create_note": {
+      "name": "Crear nota",
+      "description": "Crea una nueva nota de texto simple en Google Keep.",
+      "fields": {
+        "title": { "name": "Título", "description": "Título de la nota." },
+        "text": { "name": "Texto", "description": "Cuerpo de texto de la nota." },
+        "color": { "name": "Color", "description": "Color de la nota." },
+        "labels": { "name": "Etiquetas", "description": "Etiquetas a aplicar a la nota." }
+      }
+    },
+    "create_checklist": {
+      "name": "Crear checklist",
+      "description": "Crea una nueva nota tipo checklist (lista de compras) en Google Keep.",
+      "fields": {
+        "title": { "name": "Título", "description": "Título del checklist." },
+        "items": { "name": "Elementos", "description": "Lista de textos para pre-cargar el checklist." }
+      }
+    },
+    "add_item": {
+      "name": "Agregar elemento",
+      "description": "Agrega un elemento a un checklist existente de Google Keep.",
+      "fields": {
+        "list_id": { "name": "ID de lista", "description": "El id de la lista destino." },
+        "text": { "name": "Texto", "description": "Texto del nuevo elemento." }
+      }
+    },
+    "remove_item": {
+      "name": "Eliminar elemento",
+      "description": "Elimina un elemento de un checklist de Google Keep.",
+      "fields": {
+        "list_id": { "name": "ID de lista", "description": "El id de la lista destino." },
+        "item_id": { "name": "ID de elemento", "description": "El id del elemento a eliminar." }
+      }
+    },
+    "complete_item": {
+      "name": "Completar elemento",
+      "description": "Marca un elemento del checklist como completado.",
+      "fields": {
+        "list_id": { "name": "ID de lista", "description": "El id de la lista destino." },
+        "item_id": { "name": "ID de elemento", "description": "El id del elemento a completar." }
+      }
+    },
+    "uncomplete_item": {
+      "name": "Desmarcar elemento",
+      "description": "Marca un elemento del checklist como no completado.",
+      "fields": {
+        "list_id": { "name": "ID de lista", "description": "El id de la lista destino." },
+        "item_id": { "name": "ID de elemento", "description": "El id del elemento a desmarcar." }
+      }
+    },
+    "archive": {
+      "name": "Archivar nota",
+      "description": "Archiva una nota o lista de Google Keep.",
+      "fields": {
+        "note_id": { "name": "ID de nota", "description": "El id de la nota/lista a archivar." }
+      }
+    },
+    "unarchive": {
+      "name": "Desarchivar nota",
+      "description": "Desarchiva una nota o lista de Google Keep.",
+      "fields": {
+        "note_id": { "name": "ID de nota", "description": "El id de la nota/lista a desarchivar." }
+      }
+    },
+    "delete_note": {
+      "name": "Eliminar nota",
+      "description": "Mueve una nota o lista de Google Keep a la papelera.",
+      "fields": {
+        "note_id": { "name": "ID de nota", "description": "El id de la nota/lista a eliminar." }
+      }
+    },
+    "restore_note": {
+      "name": "Restaurar nota",
+      "description": "Restaura una nota o lista eliminada de Google Keep.",
+      "fields": {
+        "note_id": { "name": "ID de nota", "description": "El id de la nota/lista a restaurar." }
+      }
+    }
+  }
+}

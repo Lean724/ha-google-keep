@@ -1,0 +1,36 @@
+{
+  "entity": {
+    "sensor": {
+      "_": {
+        "default": "mdi:google-keep"
+      }
+    },
+    "todo": {
+      "_": {
+        "default": "mdi:google-keep"
+      }
+    },
+    "binary_sensor": {
+      "_": {
+        "default": "mdi:checkbox-marked-circle-outline",
+        "state": {
+          "on": "mdi:checkbox-marked-circle",
+          "off": "mdi:checkbox-blank-circle-outline"
+        }
+      }
+    }
+  },
+  "services": {
+    "sync": "mdi:sync",
+    "create_note": "mdi:note-plus",
+    "create_checklist": "mdi:playlist-plus",
+    "add_item": "mdi:plus-box",
+    "remove_item": "mdi:minus-box",
+    "complete_item": "mdi:checkbox-marked",
+    "uncomplete_item": "mdi:checkbox-blank-outline",
+    "archive": "mdi:archive-arrow-down",
+    "unarchive": "mdi:archive-arrow-up",
+    "delete_note": "mdi:trash-can",
+    "restore_note": "mdi:trash-can-outline"
+  }
+}

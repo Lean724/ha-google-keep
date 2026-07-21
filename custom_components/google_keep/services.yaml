@@ -1,0 +1,173 @@
+sync:
+  name: Sync
+  description: Force an immediate synchronization with Google Keep.
+  fields:
+    config_entry_id:
+      name: Account
+      description: Optional - limit the sync to a single Google Keep account.
+      required: false
+      selector:
+        config_entry:
+          integration: google_keep
+
+create_note:
+  name: Create note
+  description: Create a new plain text note in Google Keep.
+  fields:
+    title:
+      name: Title
+      description: Title of the note.
+      required: true
+      selector:
+        text:
+    text:
+      name: Text
+      description: Body text of the note.
+      required: false
+      selector:
+        text:
+          multiline: true
+    color:
+      name: Color
+      description: Note color.
+      required: false
+      selector:
+        select:
+          options:
+            - white
+            - red
+            - orange
+            - yellow
+            - green
+            - teal
+            - blue
+            - darkblue
+            - purple
+            - pink
+            - brown
+            - gray
+    labels:
+      name: Labels
+      description: Labels to apply to the note.
+      required: false
+      selector:
+        object:
+
+create_checklist:
+  name: Create checklist
+  description: Create a new checklist (shopping list style) note in Google Keep.
+  fields:
+    title:
+      name: Title
+      description: Title of the checklist.
+      required: true
+      selector:
+        text:
+    items:
+      name: Items
+      description: List of item texts to pre-populate the checklist with.
+      required: true
+      selector:
+        object:
+
+add_item:
+  name: Add item
+  description: Add an item to an existing Google Keep checklist.
+  fields:
+    list_id:
+      name: List ID
+      description: The id of the target list (see the sensor's "id" attribute).
+      required: true
+      selector:
+        text:
+    text:
+      name: Text
+      description: Text of the new item.
+      required: true
+      selector:
+        text:
+
+remove_item:
+  name: Remove item
+  description: Remove an item from a Google Keep checklist.
+  fields:
+    list_id:
+      name: List ID
+      required: true
+      selector:
+        text:
+    item_id:
+      name: Item ID
+      required: true
+      selector:
+        text:
+
+complete_item:
+  name: Complete item
+  description: Mark a checklist item as checked/complete.
+  fields:
+    list_id:
+      name: List ID
+      required: true
+      selector:
+        text:
+    item_id:
+      name: Item ID
+      required: true
+      selector:
+        text:
+
+uncomplete_item:
+  name: Uncomplete item
+  description: Mark a checklist item as unchecked.
+  fields:
+    list_id:
+      name: List ID
+      required: true
+      selector:
+        text:
+    item_id:
+      name: Item ID
+      required: true
+      selector:
+        text:
+
+archive:
+  name: Archive note
+  description: Archive a Google Keep note or list.
+  fields:
+    note_id:
+      name: Note ID
+      required: true
+      selector:
+        text:
+
+unarchive:
+  name: Unarchive note
+  description: Unarchive a Google Keep note or list.
+  fields:
+    note_id:
+      name: Note ID
+      required: true
+      selector:
+        text:
+
+delete_note:
+  name: Delete note
+  description: Move a Google Keep note or list to trash.
+  fields:
+    note_id:
+      name: Note ID
+      required: true
+      selector:
+        text:
+
+restore_note:
+  name: Restore note
+  description: Restore a trashed Google Keep note or list.
+  fields:
+    note_id:
+      name: Note ID
+      required: true
+      selector:
+        text:
